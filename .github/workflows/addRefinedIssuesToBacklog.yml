@@ -1,5 +1,8 @@
 name: Move Issues with Status "Done" from Refinement to Backlog Project
 
+on:
+    workflow_call: {}
+
 jobs:
   move-done-issues:
     runs-on: ubuntu-latest
