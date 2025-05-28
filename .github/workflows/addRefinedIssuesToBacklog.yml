@@ -1,7 +1,29 @@
 name: Move Issues with Status "Done" from Refinement to Backlog Project
 
 on:
-    workflow_call: {}
+    workflow_call:
+        inputs:
+          PROJECT_REFINEMENT_ID:
+            required: true
+            type: string
+          PROJECT_BACKLOG_ID:
+            required: true
+            type: string
+          ISSUE_REFINEMENT_STATUS_ID:
+            required: true
+            type: string
+          ISSUE_BACKLOG_STATUS_ID:
+            required: true
+            type: string
+          ISSUE_REFINEMENT_DONE_STATUS_ID:
+            required: true
+            type: string
+          ISSUE_BACKLOG_TODO_STATUS_ID:
+            required: true
+            type: string
+        secrets:
+          github-token:
+            required: true
 
 jobs:
   move-done-issues:
@@ -14,7 +36,6 @@ jobs:
       - name: Move Issues from Refinement Board (in Status "Done") to Project Backlog (with Status "ToDo")
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GH_READ_TOKEN }}
           script: |
             const org = context.repo.owner;
             const projectP1 = ${{ env.PROJECT_REFINEMENT_ID }};  // Project ID for "Refinement Board" 
