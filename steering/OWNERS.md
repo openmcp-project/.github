@@ -12,7 +12,7 @@ This page contains all active and inactive TSC members.
 
 | Name             | Organization | Github Handle                                         |
 |------------------|--------------|-------------------------------------------------------|
-| Maximilian Braun | SAP          | [maximilianbraun](https://github.com/maximilianbraun) |
+| Maximilian Braun | SAP SE       | [maximilianbraun](https://github.com/maximilianbraun) |
 
 ### Chair History
 -
