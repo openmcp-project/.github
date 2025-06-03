@@ -22,7 +22,7 @@ This page contains all active and inactive TSC members.
 | Maximilian Techritz | SAP SE       | [maximiliantech](https://github.com/maximiliantech)   |
 | Rene Schuenemann    | SAP SE       | [reshnm](https://github.com/reshnm)                   |
 | Valentin Gerlach    | SAP SE       | [ValentinGerlach](https://github.com/ValentinGerlach) |
-| Ingo Kober          | SAP SE       | [frewilhelm](https://github.com/frewilhelm)           |
+| Ingo Kober          | SAP SE       | [In-Ko](https://github.com/In-Ko)           |
 | Johannes Ott        | SAP SE       | [GenosseOtt](https://github.com/GenosseOtt)           |
 | Maximilian Braun    | SAP SE       | [maximilianbraun](https://github.com/maximilianbraun) |
 
