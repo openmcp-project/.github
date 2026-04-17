@@ -1,6 +1,6 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="opencontrolplane-horizontal-white.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="open-control-plane-horizontal-color(white).svg">
     <source media="(prefers-color-scheme: light)" srcset="opencontrolplane_logo.svg">
     <img alt="OpenControlPlane Logo" src="opencontrolplane_logo.svg">
   </picture>
