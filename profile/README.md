@@ -6,8 +6,6 @@
   </picture>
 </p>
 
-# OpenControlPlane
-
 **Control Plane as a Service** — Get started with cloud-native tools without the operational overhead.
 
 OpenControlPlane extends the Kubernetes API to provide Control Planes and open-source Kubernetes Operators as a Service. Development teams can instantly access tools like Crossplane, Flux, or External Secrets Operator without managing the installation and lifecycle of the tool themselves.
