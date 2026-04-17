@@ -1,5 +1,9 @@
 <p align="center">
-  <img alt="OpenControlPlane Logo" src="opencontrolplane_logo.svg"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="opencontrolplane-horizontal-white.svg">
+    <source media="(prefers-color-scheme: light)" srcset="open-control-plane-horizontal-color(white).svg">
+    <img alt="OpenControlPlane Logo" src="open-control-plane-horizontal-color(white).svg">
+  </picture>
 </p>
 
 # OpenControlPlane
