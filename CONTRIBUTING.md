@@ -24,8 +24,6 @@ Contributors will be asked to accept a DCO before they submit the first pull req
 5. Follow the link posted by the CLA assistant to your pull request and accept it, as described above.
 6. Wait for our code review and approval, possibly enhancing your change on request.
     - Note that the maintainers have many duties. So, depending on the required effort for reviewing, testing, and clarification, this may take a while.
-7. Once the change has been approved and merged, we will inform you in a comment.
-8. Celebrate!
 
 ## Contributing to Project Governance
 
