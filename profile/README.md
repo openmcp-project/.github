@@ -32,5 +32,9 @@ Please review [our Code of Conduct](https://github.com/openmcp-project/.github/b
 </p>
 
 <p align="center">
+  OpenControlPlane is a project of the <a href="https://neonephos.org/">NeoNephos Foundation</a>, a subfoundation of the <a href="https://linuxfoundation.eu">Linux Foundation Europe</a>.
+</p>
+
+<p align="center">
   <img alt="BMWK-EU funding logo" src="https://apeirora.eu/assets/img/BMWK-EU.png" width="300"/>
 </p>
