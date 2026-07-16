@@ -31,7 +31,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
       - name: Move Issues from Refinement Board (in Status "Done") to Project Backlog (with Status "ToDo")
         uses: actions/github-script@v9
