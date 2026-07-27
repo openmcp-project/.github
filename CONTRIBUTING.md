@@ -37,7 +37,7 @@ Use `git commit -s` to append the trailer automatically. Anonymous contributions
 
 ### 2. Verified Commits (cryptographic signing)
 
-Every commit must be cryptographically signed with a GPG or SSH key registered with your GitHub account.
+Every commit must be cryptographically signed with a GPG or SSH key [registered with your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification).
 This protects against supply chain attacks by ensuring that code pushed to the repository was authored
 by a verified contributor.
 
