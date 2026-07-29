@@ -60,23 +60,45 @@ Commit messages must follow the [Conventional Commits 1.0](https://www.conventio
 
 ```
 <type>(<optional scope>): <description>
+
+<body — explain the motivation and context for the change>
+
+<footers>
 ```
 
 Allowed types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`, `perf`, `build`.
 
-Examples:
+The body is free-form prose and should explain *why* the change is being made, not just what it does. It is optional for trivial changes but expected for `feat` and `fix` commits.
+
+Footers follow the body after a blank line. The following footers are used in this project:
+
+- `Closes: #<issue>` — links and closes the related issue
+- `Refs: #<issue>` — references a related issue without closing it
+- `BREAKING CHANGE: <description>` — required for any commit that introduces a breaking change; describes what broke and how to migrate
+
+Example of a full commit message:
 
 ```
 feat(api): add pagination support for resource listing
-fix(controller): handle nil pointer in reconcile loop
-docs: update contributing guidelines
-chore(deps): bump controller-runtime to v0.18.0
+
+The resource listing endpoints previously returned all results in a
+single response, which caused timeouts for large datasets. This change
+introduces cursor-based pagination consistent with the rest of the API.
+
+Closes: #42
 ```
 
-Breaking changes must be indicated with a `!` after the type or a `BREAKING CHANGE:` footer in the commit body:
+Example with a breaking change:
 
 ```
-feat(api)!: remove deprecated v1alpha1 endpoints
+feat(api): remove deprecated v1alpha1 endpoints
+
+The v1alpha1 endpoints have been deprecated since v0.4.0. All clients
+must migrate to v1beta1 before upgrading.
+
+BREAKING CHANGE: The /api/v1alpha1/* endpoints have been removed.
+Migrate to /api/v1beta1/* equivalents.
+Closes: #87
 ```
 
 ## How to Contribute
