@@ -37,7 +37,7 @@ Use `git commit -s` to append the trailer automatically. Anonymous contributions
 
 ### 2. Verified Commits (cryptographic signing)
 
-Every commit must be cryptographically signed with a GPG or SSH key [registered with your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification).
+Every commit must be cryptographically signed with a GPG or SSH key [registered with your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
 This protects against supply chain attacks by ensuring that code pushed to the repository was authored
 by a verified contributor.
 
@@ -54,6 +54,31 @@ git commit -s -S -m "your commit message"
 - `-s` appends the DCO `Signed-off-by` trailer
 - `-S` cryptographically signs the commit
 
+### 3. Commit Message Format
+
+Commit messages must follow the [Conventional Commits 1.0](https://www.conventionalcommits.org/) specification:
+
+```
+<type>(<optional scope>): <description>
+```
+
+Allowed types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`, `perf`, `build`.
+
+Examples:
+
+```
+feat(api): add pagination support for resource listing
+fix(controller): handle nil pointer in reconcile loop
+docs: update contributing guidelines
+chore(deps): bump controller-runtime to v0.18.0
+```
+
+Breaking changes must be indicated with a `!` after the type or a `BREAKING CHANGE:` footer in the commit body:
+
+```
+feat(api)!: remove deprecated v1alpha1 endpoints
+```
+
 ## How to Contribute
 
 1. Make sure the change is welcome (see [General Remarks](#general-remarks)).
@@ -62,6 +87,16 @@ git commit -s -S -m "your commit message"
 4. Push your branch and create a pull request in the repository.
 5. Wait for our code review and approval, possibly enhancing your change on request.
     - Note that the maintainers have many duties. So, depending on the required effort for reviewing, testing, and clarification, this may take a while.
+
+## Pull Request Guidelines
+
+Before requesting review, make sure your pull request meets the following requirements:
+
+- The PR is linked to an existing issue, or the PR description explains the motivation if no issue exists
+- Each commit is focused on a single concern and follows the [commit message format](#3-commit-message-format)
+- All commits are signed off (DCO) and cryptographically signed
+- CI checks pass
+- Breaking changes are clearly described in the PR description
 
 ## Contributing to Project Governance
 
