@@ -5,8 +5,16 @@
     "config:best-practices",
     "security:openssf-scorecard",
     "helpers:pinGitHubActionDigests",
-    ":rebaseStalePrs"
+    ":rebaseStalePrs",
+    ":enableVulnerabilityAlerts"
   ],
+  "gitIgnoredAuthors": [
+    "github-actions[bot]@users.noreply.github.com"
+  ],
+  "git-submodules": {
+    "enabled": true
+  },
+  "minimumReleaseAge": "0 days",
   "postUpdateOptions": [
     "gomodTidy"
   ],
@@ -22,6 +30,11 @@
         "golang"
       ],
       "rangeStrategy": "bump"
+    },
+    {
+      "description": "Renovate supports automated updates for Git Submodules via the git-submodules manager, which is currently in beta and must be explicitly enabled in the configuration.",
+      "matchManagers": ["git-submodules"],
+      "automerge": true
     },
     {
       "description": "Group openmcp-project/build submodule and workflow updates",
