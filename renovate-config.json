@@ -15,6 +15,7 @@
     "enabled": true
   },
   "minimumReleaseAge": "0 days",
+  "stopUpdatingLabel": "take-a-break-renovate",
   "postUpdateOptions": [
     "gomodTidy"
   ],
