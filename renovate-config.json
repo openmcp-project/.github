@@ -5,11 +5,23 @@
     "config:best-practices",
     "security:openssf-scorecard",
     "helpers:pinGitHubActionDigests",
-    ":rebaseStalePrs"
+    ":rebaseStalePrs",
+    ":enableVulnerabilityAlerts"
   ],
+  "gitIgnoredAuthors": [
+    "github-actions[bot]@users.noreply.github.com"
+  ],
+  "git-submodules": {
+    "enabled": true
+  },
+  "minimumReleaseAge": "5 days",
+  "stopUpdatingLabel": "take-a-break-renovate",
   "postUpdateOptions": [
     "gomodTidy"
   ],
+  "automerge": true,
+  "platformAutomerge": true,
+  "rebaseWhen": "conflicted",
   "packageRules": [
     {
       "matchManagers": [
@@ -22,6 +34,11 @@
         "golang"
       ],
       "rangeStrategy": "bump"
+    },
+    {
+      "description": "Renovate supports automated updates for Git Submodules via the git-submodules manager, which is currently in beta and must be explicitly enabled in the configuration.",
+      "matchManagers": ["git-submodules"],
+      "automerge": true
     },
     {
       "description": "Group openmcp-project/build submodule and workflow updates",
@@ -41,8 +58,7 @@
       ],
       "groupName": "openmcp-project Go dependencies",
       "groupSlug": "openmcp-go-deps",
-      "minimumReleaseAge": "0 days",
-      "rebaseWhen": "auto"
+      "minimumReleaseAge": "0 days"
     }
   ]
 }
