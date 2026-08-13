@@ -14,11 +14,14 @@
   "git-submodules": {
     "enabled": true
   },
-  "minimumReleaseAge": "0 days",
+  "minimumReleaseAge": "5 days",
   "stopUpdatingLabel": "take-a-break-renovate",
   "postUpdateOptions": [
     "gomodTidy"
   ],
+  "automerge": true,
+  "platformAutomerge": true,
+  "rebaseWhen": "conflicted",
   "packageRules": [
     {
       "matchManagers": [
@@ -55,8 +58,7 @@
       ],
       "groupName": "openmcp-project Go dependencies",
       "groupSlug": "openmcp-go-deps",
-      "minimumReleaseAge": "0 days",
-      "rebaseWhen": "auto"
+      "minimumReleaseAge": "0 days"
     }
   ]
 }
