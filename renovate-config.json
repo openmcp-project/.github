@@ -46,7 +46,8 @@
         "hack/common",
         "openmcp-project/build"
       ],
-      "groupName": "openmcp-project/build"
+      "groupName": "openmcp-project/build",
+      "minimumReleaseAge": "0 days"
     },
     {
       "description": "Group all openmcp-project Go dependencies into one PR",
