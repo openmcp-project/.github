@@ -21,7 +21,7 @@
   ],
   "automerge": true,
   "platformAutomerge": true,
-  "rebaseWhen": "conflicted",
+  "rebaseWhen": "auto",
   "packageRules": [
     {
       "matchManagers": [
