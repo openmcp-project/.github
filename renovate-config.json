@@ -24,6 +24,13 @@
   "rebaseWhen": "auto",
   "packageRules": [
     {
+      "description": "No stability wait for internal openmcp-project packages",
+      "matchSourceUrls": [
+        "https://github.com/openmcp-project/**"
+      ],
+      "minimumReleaseAge": "0 days"
+    },
+    {
       "matchManagers": [
         "gomod"
       ],
