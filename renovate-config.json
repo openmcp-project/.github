@@ -26,7 +26,8 @@
     {
       "description": "No stability wait for internal openmcp-project packages",
       "matchSourceUrls": [
-        "https://github.com/openmcp-project/**"
+        "https://github.com/openmcp-project/**",
+        "ghcr.io/openmcp-project/**"
       ],
       "minimumReleaseAge": "0 days"
     },
@@ -44,7 +45,9 @@
     },
     {
       "description": "Renovate supports automated updates for Git Submodules via the git-submodules manager, which is currently in beta and must be explicitly enabled in the configuration.",
-      "matchManagers": ["git-submodules"],
+      "matchManagers": [
+        "git-submodules"
+      ],
       "automerge": true
     },
     {
