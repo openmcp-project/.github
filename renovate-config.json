@@ -26,10 +26,15 @@
     {
       "description": "No stability wait for internal openmcp-project packages",
       "matchSourceUrls": [
-        "https://github.com/openmcp-project/**",
-        "ghcr.io/openmcp-project/**"
-      ],
+        "https://github.com/openmcp-project/**"      ],
       "minimumReleaseAge": "0 days"
+    },
+    {
+     "description": "No stability wait for internal openmcp-project docker images",
+      "matchDatasources": ["docker"],
+      "matchPackagePrefixes": ["ghcr.io/openmcp-project"],
+      "minimumReleaseAge": "0 days",
+      "minimumReleaseAgeBehaviour": "timestamp-optional"
     },
     {
       "matchManagers": [
