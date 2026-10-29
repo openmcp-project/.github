@@ -1,12 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
     "config:best-practices",
     "security:openssf-scorecard",
-    "helpers:pinGitHubActionDigests",
-    ":rebaseStalePrs",
-    ":enableVulnerabilityAlerts"
+    ":enableVulnerabilityAlerts",
+    ":automergeStableNonMajor",
+    ":automergeDigest"
   ],
   "gitIgnoredAuthors": [
     "github-actions[bot]@users.noreply.github.com"
@@ -19,41 +18,24 @@
   "postUpdateOptions": [
     "gomodTidy"
   ],
-  "automerge": true,
-  "platformAutomerge": true,
-  "rebaseWhen": "auto",
   "packageRules": [
     {
       "description": "No stability wait for internal openmcp-project packages",
       "matchSourceUrls": [
-        "https://github.com/openmcp-project/**"      ],
+        "https://github.com/openmcp-project/**"
+      ],
       "minimumReleaseAge": "0 days"
     },
     {
-     "description": "No stability wait for internal openmcp-project docker images",
-      "matchDatasources": ["docker"],
-      "matchPackagePrefixes": ["ghcr.io/openmcp-project"],
+      "description": "No stability wait for internal openmcp-project docker images",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackagePrefixes": [
+        "ghcr.io/openmcp-project"
+      ],
       "minimumReleaseAge": "0 days",
       "minimumReleaseAgeBehaviour": "timestamp-optional"
-    },
-    {
-      "matchManagers": [
-        "gomod"
-      ],
-      "matchDepNames": [
-        "go"
-      ],
-      "matchDepTypes": [
-        "golang"
-      ],
-      "rangeStrategy": "bump"
-    },
-    {
-      "description": "Renovate supports automated updates for Git Submodules via the git-submodules manager, which is currently in beta and must be explicitly enabled in the configuration.",
-      "matchManagers": [
-        "git-submodules"
-      ],
-      "automerge": true
     },
     {
       "description": "Group openmcp-project/build submodule and workflow updates",
