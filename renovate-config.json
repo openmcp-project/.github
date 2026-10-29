@@ -17,7 +17,6 @@
     "gomodTidy"
   ],
   "automerge": true,
-  "platformAutomerge": true,
   "packageRules": [
     {
       "description": "No stability wait for internal openmcp-project packages",
