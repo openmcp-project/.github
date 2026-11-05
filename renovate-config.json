@@ -38,6 +38,17 @@
       "minimumReleaseAgeBehaviour": "timestamp-optional"
     },
     {
+      "description": "Group all FluxCD Go dependencies into one PR",
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchPackageNames": [
+        "/^github\\.com/fluxcd//"
+      ],
+      "groupName": "FluxCD Go dependencies",
+      "groupSlug": "fluxcd-go-deps"
+    },
+    {
       "description": "Group openmcp-project/build submodule and workflow updates",
       "matchDepNames": [
         "hack/common",
