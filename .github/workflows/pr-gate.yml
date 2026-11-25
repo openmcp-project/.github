@@ -1,34 +1,14 @@
-# Copyright The Platform Mesh Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 name: pr-gate
 
-# Auto-merge gate for pull requests and merge queue. This allows for the repository
-# to only have one single required job configured instead of having to maintain
-# per-repository configuration on admin-level.
+# Org-wide merge gate, run in every repository by the `org-default-branch` ruleset in tofu/org-rulesets.tf of openmcp-project/admin.
+# Repositories need no copy of this file.
 
 on:
+  # Rulesets ignore event filters such as `types`, `branches` and `paths`.
   merge_group:
   pull_request:
-    types:
-      - opened
-      - edited # re-evaluate after the release-note check re-runs on a description edit
-      - synchronize
-      - reopened
 
 permissions:
-  contents: read # Needed for actions/checkout
   actions: read # Needed to list workflow runs for the gate
 
 concurrency:
@@ -45,14 +25,46 @@ jobs:
       SHA: ${{ github.event.merge_group.head_sha || github.event.pull_request.head.sha }}
       SELF_WORKFLOW: ${{ github.workflow }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          persist-credentials: false
-          sparse-checkout: hack/pr-gate.sh
-          sparse-checkout-cone-mode: false
-
-      - name: Wait for all jobs to succeed or the first to fail
+      # must be inlined so the .github repo doesn't need to be checked out.
+      - name: Wait for all workflows to succeed or the first to fail
         run: |
-          sleep 30  # let workflows register their checks first
-          bash hack/pr-gate.sh
+          set -euo pipefail
+
+          # Latest run per workflow on the commit as a stream of {name, bucket}.
+          runs() {
+              gh run list --commit "$SHA" --limit 100 --json name,status,conclusion,createdAt,databaseId \
+                  --jq '
+                      group_by(.name)
+                      | map(max_by([.createdAt, .databaseId]))
+                      | .[]
+                      | select(.name != env.SELF_WORKFLOW)
+                      | {
+                          name,
+                          bucket: (
+                              if .status != "completed" then "pending"
+                              elif .conclusion == "success" or .conclusion == "skipped" or .conclusion == "neutral" then "pass"
+                              else "fail"
+                              end
+                          )
+                      }'
+          }
+
+          sleep 30 # let workflows register their runs first
+
+          while true; do
+              runs="$(runs)"
+              if jq -e 'select(.bucket == "fail")' <<< "$runs" > /dev/null; then
+                  echo Failed workflows:
+                  jq -r 'select(.bucket == "fail") | "  \(.name)"' <<< "$runs"
+                  exit 1
+              fi
+              if jq -e 'select(.bucket == "pending")' <<< "$runs" > /dev/null; then
+                  echo Waiting for:
+                  jq -r 'select(.bucket == "pending") | "  \(.name)"' <<< "$runs"
+                  sleep 5
+                  continue
+              fi
+              break
+          done
+
+          echo All workflows passed
