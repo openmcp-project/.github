@@ -76,8 +76,12 @@ Before requesting review, make sure your pull request meets the following requir
 - All commits are signed off (DCO) and cryptographically signed
 - All required checks pass, including the org-wide `pr-gate`, which waits for the other workflows to finish and fails if any fail
 - External contributors need a maintainer to approve GitHub Actions runs; organization members do not need this approval
-- At least one approving review is required, including a code owner where CODEOWNERS defines one; changes to CODEOWNERS require TSC approval
+- Get at least one approving review, from a code owner where defined. CODEOWNERS changes also need TSC approval.
 - Breaking changes are clearly described in the PR description
+
+## Organization Membership
+
+You do not need to be an organization member to contribute. To request membership or a team change, open a pull request updating [orgs/openmcp-project/org.yaml](https://github.com/neonephos/account-administration/blob/main/orgs/openmcp-project/org.yaml) in `neonephos/account-administration`. Organization membership and teams, including the `contributors` team, are managed there.
 
 ## Contributing to Project Governance
 
