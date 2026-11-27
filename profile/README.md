@@ -19,7 +19,9 @@ OpenControlPlane extends the Kubernetes API to provide Control Planes and open-s
 
 ## :busts_in_silhouette: Get Involved
 
-We welcome contributions of all kinds. Check out our [open issues](https://github.com/issues?q=is%3Aopen+is%3Aissue+org%3Aopenmcp-project+archived%3Afalse+) to get started.
+We welcome contributions of all kinds. Check out our [open issues](https://github.com/issues?q=is%3Aopen+is%3Aissue+org%3Aopenmcp-project+archived%3Afalse+) and [contribution guidelines](https://github.com/openmcp-project/.github/blob/main/CONTRIBUTING.md) to get started.
+
+Membership is not required to contribute. To request organization membership or a team change, open a PR updating [our membership configuration](https://github.com/neonephos/account-administration/blob/main/orgs/openmcp-project/org.yaml).
 
 ## :scroll: Code of Conduct
 

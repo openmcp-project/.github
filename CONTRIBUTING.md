@@ -13,7 +13,7 @@ There are some important things to know:
 
 ## Commit Requirements
 
-Every commit must satisfy two independent requirements. Both are enforced on every commit in every pull request.
+Every commit must satisfy the following requirements.
 
 ### 1. Developer Certificate of Origin (DCO)
 
@@ -48,7 +48,7 @@ Use `git commit -S` to sign a commit.
 To satisfy both requirements in one step:
 
 ```
-git commit -s -S -m "your commit message"
+git commit -s -S -m "docs: clarify contribution guidelines"
 ```
 
 - `-s` appends the DCO `Signed-off-by` trailer
@@ -61,9 +61,9 @@ Commit messages must follow the [Conventional Commits 1.0](https://www.conventio
 ## How to Contribute
 
 1. Make sure the change is welcome (see [General Remarks](#general-remarks)).
-2. Create a branch by forking the repository and apply your change.
-3. Commit your changes, ensuring each commit is signed off and cryptographically signed. See [Commit Requirements](#commit-requirements).
-4. Push your branch and create a pull request in the repository.
+2. Fork the repository, create a feature branch in your fork, and apply your change. All public repositories require this workflow, including for organization members. Private repositories are exempt; contributors with Write access can create upstream feature branches.
+3. Commit your changes, ensuring each commit is signed off, cryptographically signed, and follows Conventional Commits. See [Commit Requirements](#commit-requirements).
+4. Push your branch to your fork (or upstream for private repositories) and open a pull request against the upstream repository.
 5. Wait for our code review and approval, possibly enhancing your change on request.
     - Note that the maintainers have many duties. So, depending on the required effort for reviewing, testing, and clarification, this may take a while.
 
@@ -74,8 +74,14 @@ Before requesting review, make sure your pull request meets the following requir
 - The PR is linked to an existing issue, or the PR description explains the motivation if no issue exists
 - Each commit is focused on a single concern and follows the [commit message format](#3-commit-message-format)
 - All commits are signed off (DCO) and cryptographically signed
-- CI checks pass
+- All required checks pass, including the org-wide `pr-gate`, which waits for the other workflows to finish and fails if any fail
+- External contributors need a maintainer to approve GitHub Actions runs; organization members do not need this approval
+- Get at least one approving review, from a code owner where defined. CODEOWNERS changes also need TSC approval.
 - Breaking changes are clearly described in the PR description
+
+## Organization Membership
+
+You do not need to be an organization member to contribute. To request membership or a team change, open a pull request updating [orgs/openmcp-project/org.yaml](https://github.com/neonephos/account-administration/blob/main/orgs/openmcp-project/org.yaml) in `neonephos/account-administration`. Organization membership and teams, including the `contributors` team, are managed there.
 
 ## Contributing to Project Governance
 
