@@ -1,0 +1,29 @@
+name: Zizmor GitHub Actions analysis workflow
+
+# Org-wide merge gate.
+
+on:
+  merge_group:
+  pull_request:
+
+jobs:
+  zizmor:
+    name: Zizmor analysis
+    runs-on: ubuntu-24.04-arm
+    permissions:
+      security-events: write # Needed for Code scanning (SARIF) upload
+      contents: read # Needed to read repo contents during analysis
+      actions: read # Needed by zizmor online audits / SARIF upload to read workflow run metadata
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: "Run zizmor analysis"
+        uses: zizmorcore/zizmor-action@45d7276c9ca790aabd705e31ca99c6185c3e76dd # v0.8.1
+        with:
+          # how pedantic zizmor should be: regular, pedantic or auditor
+          # https://docs.zizmor.sh/usage/#using-personas
+          persona: auditor
